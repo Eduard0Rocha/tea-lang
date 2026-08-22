@@ -37,7 +37,7 @@ public class CommandLineInterface {
 				handleFileClause(clause);
 				// TODO: confirmation message
 			}
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			System.err.println("Failed to read file: " + filePath + " (" + e.getMessage() + ")");
 		}
 	}
