@@ -3,6 +3,9 @@ package com.eduard0rocha.tealang;
 import com.eduard0rocha.tealang.config.ArgumentsParser;
 import com.eduard0rocha.tealang.data.ApplicationArguments;
 
+/**
+ * Entry point of tea-lang application.
+ */
 public class TeaLangApplication {
 
 	public static void main(String[] args) {
