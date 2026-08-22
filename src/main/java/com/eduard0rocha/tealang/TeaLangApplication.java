@@ -12,10 +12,11 @@ public class TeaLangApplication {
 		// Parse application arguments
 		final ApplicationArguments applicationArguments = ArgumentsParser.parse(args);
 		
-		System.out.println(applicationArguments);
-		
 		// Validate application arguments
-		// TODO
+		if (applicationArguments.filePath() == null || applicationArguments.filePath().isBlank()) {
+			// TODO: display error message
+			return;
+		}
 		
 		// Start CLI session
 		// TODO
