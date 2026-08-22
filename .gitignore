@@ -26,3 +26,5 @@ buildNumber.properties
 .DS_Store
 Thumbs.db
 
+# Tea files
+*.tea
