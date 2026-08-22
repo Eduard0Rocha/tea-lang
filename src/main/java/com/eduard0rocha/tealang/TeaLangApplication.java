@@ -1,5 +1,6 @@
 package com.eduard0rocha.tealang;
 
+import com.eduard0rocha.tealang.cli.CommandLineInterface;
 import com.eduard0rocha.tealang.config.ArgumentsParser;
 import com.eduard0rocha.tealang.data.ApplicationArguments;
 
@@ -13,13 +14,16 @@ public class TeaLangApplication {
 		final ApplicationArguments applicationArguments = ArgumentsParser.parse(args);
 		
 		// Validate application arguments
-		if (applicationArguments.filePath() == null || applicationArguments.filePath().isBlank()) {
+		final String filePath = applicationArguments.filePath();
+		if (filePath == null || filePath.isBlank()) {
 			// TODO: display error message
 			return;
 		}
 		
 		// Start CLI session
-		// TODO
+		final CommandLineInterface cli = new CommandLineInterface();
+		cli.runFile(filePath);
+		cli.start();
 	}
 
 }
