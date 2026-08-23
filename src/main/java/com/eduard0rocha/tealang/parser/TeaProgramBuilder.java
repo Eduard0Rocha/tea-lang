@@ -12,7 +12,7 @@ import com.eduard0rocha.tealang.data.clause.term.TeaTerm;
 /**
  * Converts ANTLR parse trees into TeaClause DTOs.
  */
-public class TeaClauseBuilder extends TeaBaseVisitor<TeaProgram> {
+public class TeaProgramBuilder extends TeaBaseVisitor<TeaProgram> {
 
 	@Override
 	public TeaProgram visitProgram(final TeaParser.ProgramContext ctx) {

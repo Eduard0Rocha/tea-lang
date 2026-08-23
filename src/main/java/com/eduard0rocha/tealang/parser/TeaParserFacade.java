@@ -31,6 +31,6 @@ public class TeaParserFacade {
 
         final TeaParser.ProgramContext tree = parser.program();
         
-    	return new TeaClauseBuilder().visit(tree);
+    	return new TeaProgramBuilder().visit(tree);
     }
 }
