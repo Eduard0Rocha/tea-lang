@@ -34,9 +34,6 @@ public class TeaParserFacade {
 
         final TeaParser.ClauseContext tree = parser.clause();
         
-        System.out.println(tree);
-    	
-    	// TODO: build TeaClause
-    	return null;
+    	return new TeaClauseBuilder().visit(tree);
     }
 }

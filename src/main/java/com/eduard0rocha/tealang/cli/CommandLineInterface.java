@@ -46,7 +46,9 @@ public class CommandLineInterface {
 	}
 	
 	private void handleFileClause(final String clause) {
+		System.out.println(clause);
 		final TeaClause parsedClause = TeaParserFacade.parse(clause);
+		System.out.println(parsedClause);
 		// TODO: handle parsedClause
 	}
 	

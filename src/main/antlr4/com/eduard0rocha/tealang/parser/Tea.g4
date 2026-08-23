@@ -5,7 +5,7 @@ clause : fact DOT;
 fact : term;
 
 term
-	: ATOM '(' termArgs ')'
+	: ATOM LPAREN termArgs RPAREN
 	| ATOM
 	;
 
