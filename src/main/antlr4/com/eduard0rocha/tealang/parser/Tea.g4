@@ -11,7 +11,7 @@ term
 	| ATOM
 	;
 
-termArgs : ATOM (COMMA ATOM)* ;
+termArgs : term (COMMA term)* ;
 
 ATOM : [a-z][a-zA-Z0-9_]*;
 

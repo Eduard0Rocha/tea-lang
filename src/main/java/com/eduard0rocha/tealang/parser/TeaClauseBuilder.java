@@ -2,8 +2,6 @@ package com.eduard0rocha.tealang.parser;
 
 import java.util.List;
 
-import org.antlr.v4.runtime.tree.TerminalNode;
-
 import com.eduard0rocha.tealang.data.TeaProgram;
 import com.eduard0rocha.tealang.data.clause.TeaClause;
 import com.eduard0rocha.tealang.data.clause.TeaFact;
@@ -38,9 +36,9 @@ public class TeaClauseBuilder extends TeaBaseVisitor<TeaProgram> {
 			return new TeaAtom(ctx.ATOM().getText());
 		}
 		final TeaParser.TermArgsContext termArgsCtx = ctx.termArgs();
-		final List<String> arguments = termArgsCtx.ATOM()
+		final List<TeaTerm> arguments = termArgsCtx.term()
 				.stream()
-				.map(TerminalNode::getText)
+				.map(this::toTeaTerm)
 				.toList();
 		return new TeaCompoundTerm(ctx.ATOM().getText(), arguments);
 	}

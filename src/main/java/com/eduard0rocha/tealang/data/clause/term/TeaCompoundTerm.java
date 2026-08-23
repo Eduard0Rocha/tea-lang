@@ -8,6 +8,6 @@ import java.util.List;
  * @param functor   the compound term's functor
  * @param arguments the compound term's arguments
  */
-public record TeaCompoundTerm(String functor, List<String> arguments) implements TeaTerm {
+public record TeaCompoundTerm(String functor, List<TeaTerm> arguments) implements TeaTerm {
 
 }
