@@ -5,6 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+import com.eduard0rocha.tealang.data.clause.TeaClause;
+import com.eduard0rocha.tealang.parser.TeaParserFacade;
+
 /**
  * CLI interface.
  */
@@ -43,8 +46,8 @@ public class CommandLineInterface {
 	}
 	
 	private void handleFileClause(final String clause) {
-		// TODO
-		System.out.println(clause);
+		final TeaClause parsedClause = TeaParserFacade.parse(clause);
+		// TODO: handle parsedClause
 	}
 	
 	/**
