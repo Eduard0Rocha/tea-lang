@@ -10,7 +10,7 @@ import com.eduard0rocha.tealang.data.clause.term.TeaCompoundTerm;
 import com.eduard0rocha.tealang.data.clause.term.TeaTerm;
 
 /**
- * Converts ANTLR parse trees into TeaClause DTOs.
+ * Converts ANTLR parse trees into TeaProgram DTOs.
  */
 public class TeaProgramBuilder extends TeaBaseVisitor<TeaProgram> {
 
