@@ -12,18 +12,10 @@ public class TeaLangApplication {
 	public static void main(String[] args) {
 		// Parse application arguments
 		final ApplicationArguments applicationArguments = ArgumentsParser.parse(args);
-		
-		// Validate application arguments
-		final String filePath = applicationArguments.filePath();
-		if (filePath == null || filePath.isBlank()) {
-			// TODO: display error message
-			return;
-		}
-		
+
 		// Start CLI session
 		final CommandLineInterface cli = new CommandLineInterface();
-		cli.runFile(filePath);
+		cli.runFiles(applicationArguments.filePaths());
 		cli.start();
 	}
-
 }

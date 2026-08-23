@@ -1,10 +1,12 @@
 package com.eduard0rocha.tealang.data;
 
+import java.util.List;
+
 /**
  * Application arguments DTO.
- * 
- * @param filePath the path to a .tea file to run at startup, or {@code null} if none was given
+ *
+ * @param filePaths the paths to the .tea files to run at startup, or an empty list if none were given
  */
-public record ApplicationArguments(String filePath) {
+public record ApplicationArguments(List<String> filePaths) {
 
 }
