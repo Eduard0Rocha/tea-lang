@@ -25,7 +25,6 @@ public class KnowledgeBaseManager {
 		try {
 			final String content = Files.readString(path);
 	        handleFileProgram(content);
-	        // TODO: confirmation message
 		} catch (final IOException e) {
 			System.err.println("Failed to read file: " + filePath + " (" + e.getMessage() + ")");
 		}
