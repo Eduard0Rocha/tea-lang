@@ -11,9 +11,6 @@ import com.eduard0rocha.tealang.data.TeaProgram;
  */
 public class TeaParserFacade {
 
-	public TeaParserFacade() {
-	}
-	
 	/**
      * Parses the given Tea program and returns the corresponding TeaProgram DTO.
      *

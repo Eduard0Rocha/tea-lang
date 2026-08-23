@@ -12,9 +12,6 @@ public class CommandLineInterface {
 	 */
 	private KnowledgeBaseManager knowledgeBaseManager = new KnowledgeBaseManager();;
 
-	public CommandLineInterface() {
-	}
-	
 	/**
 	 * Loads the Tea program from the given file into the knowledge base.
 	 *

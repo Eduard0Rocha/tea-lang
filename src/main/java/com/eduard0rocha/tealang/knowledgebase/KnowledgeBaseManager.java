@@ -12,9 +12,6 @@ import com.eduard0rocha.tealang.parser.TeaParserFacade;
  */
 public class KnowledgeBaseManager {
 
-	public KnowledgeBaseManager() {
-	}
-	
 	/**
 	 * Reads, parses, and loads the Tea program from the given file into the knowledge base.
 	 *
