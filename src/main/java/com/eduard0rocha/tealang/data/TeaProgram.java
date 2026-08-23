@@ -1,0 +1,14 @@
+package com.eduard0rocha.tealang.data;
+
+import java.util.List;
+
+import com.eduard0rocha.tealang.data.clause.TeaClause;
+
+/**
+ * Tea program DTO.
+ * 
+ * @param clauses the program's list of clauses
+ */
+public record TeaProgram(List<TeaClause> clauses) {
+
+}

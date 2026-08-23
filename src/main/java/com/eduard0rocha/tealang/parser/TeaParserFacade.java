@@ -3,7 +3,7 @@ package com.eduard0rocha.tealang.parser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
-import com.eduard0rocha.tealang.data.clause.TeaClause;
+import com.eduard0rocha.tealang.data.TeaProgram;
 
 /**
  * Tea parser facade.
@@ -15,14 +15,14 @@ public class TeaParserFacade {
 	}
 	
 	/**
-     * Parses the given Tea clause and returns the corresponding TeaClause DTO.
+     * Parses the given Tea program and returns the corresponding TeaProgram DTO.
      *
-     * @param clause the raw Tea clause text
-     * @return the parsed TeaClause
+     * @param clause the raw Tea program text
+     * @return the parsed TeaProgram
      * @throws org.antlr.v4.runtime.misc.ParseCancellationException if the command is invalid
      */
-    public static TeaClause parse(final String clause) {
-    	final TeaLexer lexer = new TeaLexer(CharStreams.fromString(clause));
+    public static TeaProgram parseProgram(final String program) {
+    	final TeaLexer lexer = new TeaLexer(CharStreams.fromString(program));
         lexer.removeErrorListeners();
         lexer.addErrorListener(ThrowingErrorListener.INSTANCE);
         
@@ -32,7 +32,7 @@ public class TeaParserFacade {
         parser.removeErrorListeners();
         parser.addErrorListener(ThrowingErrorListener.INSTANCE);
 
-        final TeaParser.ClauseContext tree = parser.clause();
+        final TeaParser.ProgramContext tree = parser.program();
         
     	return new TeaClauseBuilder().visit(tree);
     }

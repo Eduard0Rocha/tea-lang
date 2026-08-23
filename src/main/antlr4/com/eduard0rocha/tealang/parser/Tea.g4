@@ -1,5 +1,7 @@
 grammar Tea;
 
+program : clause+ EOF;
+
 clause : fact DOT;
 
 fact : term;
@@ -19,3 +21,4 @@ COMMA  : ',';
 DOT    : '.';
 
 WS : [ \t\r\n]+ -> skip;
+COMMENT : '%' ~[\r\n]* -> skip;

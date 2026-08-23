@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+import com.eduard0rocha.tealang.data.TeaProgram;
 import com.eduard0rocha.tealang.data.clause.TeaClause;
 import com.eduard0rocha.tealang.parser.TeaParserFacade;
 
@@ -12,11 +13,6 @@ import com.eduard0rocha.tealang.parser.TeaParserFacade;
  * CLI interface.
  */
 public class CommandLineInterface {
-	
-	/**
-	 * Prefix identifying a comment line in a .tea file.
-	 */
-	private static final String COMMENT_PREFIX = "%";
 
 	public CommandLineInterface() {
 		// TODO: instantiate the "KnowledgeBaseManager"
@@ -31,25 +27,19 @@ public class CommandLineInterface {
 	public void runFile(final String filePath) {
 		final Path path = Path.of(filePath);
 		try {
-			final List<String> lines = Files.readAllLines(path);
-			for (final String line : lines) {
-				final String clause = line.trim();
-				if (clause.isEmpty() || clause.startsWith(COMMENT_PREFIX)) {
-					continue;
-				}
-				handleFileClause(clause);
-				// TODO: confirmation message
-			}
+			final String content = Files.readString(path);
+	        handleFileProgram(content);
+	        // TODO: confirmation message
 		} catch (final IOException e) {
 			System.err.println("Failed to read file: " + filePath + " (" + e.getMessage() + ")");
 		}
 	}
 	
-	private void handleFileClause(final String clause) {
-		System.out.println(clause);
-		final TeaClause parsedClause = TeaParserFacade.parse(clause);
-		System.out.println(parsedClause);
-		// TODO: handle parsedClause
+	private void handleFileProgram(final String program) {
+	    System.out.println(program);
+	    final TeaProgram parsedProgram = TeaParserFacade.parseProgram(program);
+	    System.out.println(parsedProgram);
+	    // TODO: handle parsedProgram
 	}
 	
 	/**
