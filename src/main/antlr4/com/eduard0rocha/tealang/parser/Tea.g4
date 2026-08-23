@@ -1,8 +1,8 @@
 grammar Tea;
 
-clause : fact DOT
+clause : fact DOT;
 
-fact : term
+fact : term;
 
 term
 	: ATOM '(' termArgs ')'
