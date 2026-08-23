@@ -3,10 +3,8 @@ package com.eduard0rocha.tealang.cli;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
 
 import com.eduard0rocha.tealang.data.TeaProgram;
-import com.eduard0rocha.tealang.data.clause.TeaClause;
 import com.eduard0rocha.tealang.parser.TeaParserFacade;
 
 /**
@@ -36,7 +34,6 @@ public class CommandLineInterface {
 	}
 	
 	private void handleFileProgram(final String program) {
-	    System.out.println(program);
 	    final TeaProgram parsedProgram = TeaParserFacade.parseProgram(program);
 	    System.out.println(parsedProgram);
 	    // TODO: handle parsedProgram
