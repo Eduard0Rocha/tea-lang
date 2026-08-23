@@ -30,7 +30,6 @@ public class KnowledgeBase {
 			case TeaFact fact -> keyFor(fact.term());
 		};
 		clausesByPredicate.computeIfAbsent(key, _ -> new ArrayList<>()).add(clause);
-		System.out.println(clausesByPredicate); // TODO: remove this after tests
 	}
 	
 	private PredicateIndicator keyFor(final TeaTerm term) {

@@ -15,7 +15,6 @@ public class TeaLangApplication {
 
 		// Start CLI session
 		final CommandLineInterface cli = new CommandLineInterface();
-		cli.runFiles(applicationArguments.filePaths());
-		cli.start();
+		cli.start(applicationArguments.filePaths());
 	}
 }
