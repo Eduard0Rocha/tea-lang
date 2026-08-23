@@ -7,10 +7,7 @@ import com.eduard0rocha.tealang.knowledgebase.KnowledgeBaseManager;
  */
 public class CommandLineInterface {
 	
-	/**
-	 * Knowledge base manager.
-	 */
-	private KnowledgeBaseManager knowledgeBaseManager = new KnowledgeBaseManager();;
+	private KnowledgeBaseManager knowledgeBaseManager = new KnowledgeBaseManager();
 
 	/**
 	 * Loads the Tea program from the given file into the knowledge base.
