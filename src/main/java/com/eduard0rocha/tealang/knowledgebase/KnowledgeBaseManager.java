@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import com.eduard0rocha.tealang.data.FileLoadResult;
 import com.eduard0rocha.tealang.data.TeaProgram;
 import com.eduard0rocha.tealang.data.clause.TeaClause;
+import com.eduard0rocha.tealang.data.clause.term.TeaTerm;
 import com.eduard0rocha.tealang.parser.TeaParserFacade;
 
 /**
@@ -41,5 +42,15 @@ public class KnowledgeBaseManager {
 	    for (final TeaClause clause : parsedProgram.clauses()) {
 	    	knowledgeBase.addClause(clause);
 	    }
+	}
+	
+	/**
+	 * Checks whether the knowledge base contains a clause matching the given term.
+	 *
+	 * @param term the term to query
+	 * @return {@code true} if a matching clause exists, {@code false} otherwise
+	 */
+	public boolean query(final TeaTerm term) {
+	    return knowledgeBase.query(term);
 	}
 }

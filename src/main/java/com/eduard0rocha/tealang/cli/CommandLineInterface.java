@@ -9,6 +9,7 @@ import org.antlr.v4.runtime.misc.ParseCancellationException;
 
 import com.eduard0rocha.tealang.data.FileLoadResult;
 import com.eduard0rocha.tealang.data.clause.TeaClause;
+import com.eduard0rocha.tealang.data.clause.TeaFact;
 import com.eduard0rocha.tealang.knowledgebase.KnowledgeBaseManager;
 import com.eduard0rocha.tealang.parser.TeaParserFacade;
 
@@ -71,11 +72,15 @@ public class CommandLineInterface {
 	
 	private void handleQuery(final String query) {
 		try {
-			final TeaClause clause = TeaParserFacade.parseClause(query);
-			System.out.println(clause);
-			// TODO: handle it
+			final TeaClause queryClause = TeaParserFacade.parseClause(query);
+			switch(queryClause) {
+				case TeaFact queryFact -> {
+					final boolean result = knowledgeBaseManager.query(queryFact.term());
+					System.out.println(result + ".");
+				}
+			}
 		} catch (final ParseCancellationException e) {
-			System.err.println("Invalid query: " + e.getMessage());
+			System.out.println("Invalid query: " + e.getMessage());
 		}
 	}
 }

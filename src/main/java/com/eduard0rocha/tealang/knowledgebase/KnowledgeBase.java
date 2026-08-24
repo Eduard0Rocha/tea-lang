@@ -32,6 +32,19 @@ public class KnowledgeBase {
 		clausesByPredicate.computeIfAbsent(key, _ -> new ArrayList<>()).add(clause);
 	}
 	
+	/**
+	 * Checks whether the knowledge base contains a clause matching the given term.
+	 *
+	 * @param term the term to query
+	 * @return {@code true} if a matching clause exists, {@code false} otherwise
+	 */
+	public boolean query(final TeaTerm term) {
+		final PredicateIndicator key = keyFor(term);
+		final List<TeaClause> predicateClauses = clausesByPredicate.getOrDefault(key, List.of());
+		return predicateClauses.stream().anyMatch(clause -> clause.head().equals(term));
+		// TODO: error checking (Unknown procedure: c/1 (... could not correct gols) ; Unknown procedure a/0\n\tHowever, there are definitions for:\n\t\ta/2\n false.)
+	}
+	
 	private PredicateIndicator keyFor(final TeaTerm term) {
 		return switch (term) {
 			case TeaAtom atom -> new PredicateIndicator(atom.name(), 0);

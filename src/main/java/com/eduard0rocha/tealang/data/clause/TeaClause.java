@@ -1,8 +1,16 @@
 package com.eduard0rocha.tealang.data.clause;
 
+import com.eduard0rocha.tealang.data.clause.term.TeaTerm;
+
 /**
  * Tea clause DTO interface.
  */
 public sealed interface TeaClause permits TeaFact {
-
+	
+	/**
+	 * Returns this clause's head term.
+	 *
+	 * @return the clause's head term
+	 */
+	TeaTerm head();
 }

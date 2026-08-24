@@ -9,4 +9,8 @@ import com.eduard0rocha.tealang.data.clause.term.TeaTerm;
  */
 public record TeaFact(TeaTerm term) implements TeaClause {
 
+	@Override
+	public TeaTerm head() {
+		return term();
+	}
 }
