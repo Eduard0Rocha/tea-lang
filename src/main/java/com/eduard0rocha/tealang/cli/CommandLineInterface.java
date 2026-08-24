@@ -5,8 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import org.antlr.v4.runtime.misc.ParseCancellationException;
+
 import com.eduard0rocha.tealang.data.FileLoadResult;
+import com.eduard0rocha.tealang.data.clause.TeaClause;
 import com.eduard0rocha.tealang.knowledgebase.KnowledgeBaseManager;
+import com.eduard0rocha.tealang.parser.TeaParserFacade;
 
 /**
  * CLI interface.
@@ -66,6 +70,12 @@ public class CommandLineInterface {
 	}
 	
 	private void handleQuery(final String query) {
-		// TODO
+		try {
+			final TeaClause clause = TeaParserFacade.parseClause(query);
+			System.out.println(clause);
+			// TODO: handle it
+		} catch (final ParseCancellationException e) {
+			System.err.println("Invalid query: " + e.getMessage());
+		}
 	}
 }

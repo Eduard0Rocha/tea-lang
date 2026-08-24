@@ -22,7 +22,8 @@ public class TeaProgramBuilder extends TeaBaseVisitor<TeaProgram> {
 	    return new TeaProgram(clauses);
 	}
 	
-	private TeaClause toTeaClause(final TeaParser.ClauseContext ctx) {
+	// This method is public so it can be used to parse queries (clauses) from stdin.
+	public TeaClause toTeaClause(final TeaParser.ClauseContext ctx) {
 		return toTeaFact(ctx.fact());
 	}
 	
