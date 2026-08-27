@@ -5,6 +5,7 @@ import java.util.List;
 import com.eduard0rocha.tealang.data.TeaProgram;
 import com.eduard0rocha.tealang.data.language.clause.TeaClause;
 import com.eduard0rocha.tealang.data.language.clause.TeaFact;
+import com.eduard0rocha.tealang.data.language.query.TeaQuery;
 import com.eduard0rocha.tealang.data.language.term.TeaAtom;
 import com.eduard0rocha.tealang.data.language.term.TeaCompoundTerm;
 import com.eduard0rocha.tealang.data.language.term.TeaTerm;
@@ -23,8 +24,19 @@ public class TeaProgramBuilder extends TeaBaseVisitor<TeaProgram> {
 	    return new TeaProgram(clauses);
 	}
 	
-	// This method is public so it can be used to parse queries (clauses) from stdin.
-	public TeaClause toTeaClause(final TeaParser.ClauseContext ctx) {
+	/**
+	 * Converts a parsed clause into a TeaQuery DTO, without applying fact validation rules
+	 * (e.g. queries may contain variables).
+	 *
+	 * @param ctx the parsed clause context
+	 * @return the resulting TeaQuery
+	 */
+	public TeaQuery toTeaQuery(final TeaParser.ClauseContext ctx) {
+		final TeaTerm term = toTeaTerm(ctx.fact().term());
+	    return new TeaQuery(term);
+	}
+	
+	private TeaClause toTeaClause(final TeaParser.ClauseContext ctx) {
 		return toTeaFact(ctx.fact());
 	}
 	

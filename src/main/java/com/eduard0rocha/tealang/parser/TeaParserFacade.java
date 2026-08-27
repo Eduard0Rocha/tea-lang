@@ -4,7 +4,7 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
 import com.eduard0rocha.tealang.data.TeaProgram;
-import com.eduard0rocha.tealang.data.language.clause.TeaClause;
+import com.eduard0rocha.tealang.data.language.query.TeaQuery;
 
 /**
  * Tea parser facade.
@@ -26,16 +26,16 @@ public class TeaParserFacade {
     }
     
     /**
-	 * Parses the given Tea clause and returns the corresponding TeaClause DTO.
+	 * Parses the given Tea query and returns the corresponding TeaQuery DTO.
 	 *
-	 * @param clause the raw Tea clause text
-	 * @return the parsed TeaClause
-	 * @throws org.antlr.v4.runtime.misc.ParseCancellationException if the clause is invalid
+	 * @param query the raw Tea query text
+	 * @return the parsed TeaQuery
+	 * @throws org.antlr.v4.runtime.misc.ParseCancellationException if the query is invalid
 	 */
-    public static TeaClause parseClause(final String query) {
+    public static TeaQuery parseQuery(final String query) {
     	final TeaParser parser = createParser(query);
     	final TeaParser.ClauseContext tree = parser.clause();
-    	return new TeaProgramBuilder().toTeaClause(tree);
+    	return new TeaProgramBuilder().toTeaQuery(tree);
     }
     
     private static TeaParser createParser(final String input) {
