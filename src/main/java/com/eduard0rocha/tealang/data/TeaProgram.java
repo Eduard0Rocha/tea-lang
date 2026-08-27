@@ -2,7 +2,7 @@ package com.eduard0rocha.tealang.data;
 
 import java.util.List;
 
-import com.eduard0rocha.tealang.data.clause.TeaClause;
+import com.eduard0rocha.tealang.data.language.clause.TeaClause;
 
 /**
  * Tea program DTO.

@@ -1,6 +1,6 @@
-package com.eduard0rocha.tealang.data.clause;
+package com.eduard0rocha.tealang.data.language.clause;
 
-import com.eduard0rocha.tealang.data.clause.term.TeaTerm;
+import com.eduard0rocha.tealang.data.language.term.TeaTerm;
 
 /**
  * Tea clause DTO interface.

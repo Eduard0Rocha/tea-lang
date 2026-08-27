@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import com.eduard0rocha.tealang.data.PredicateIndicator;
-import com.eduard0rocha.tealang.data.clause.TeaClause;
-import com.eduard0rocha.tealang.data.clause.TeaFact;
-import com.eduard0rocha.tealang.data.clause.term.TeaAtom;
-import com.eduard0rocha.tealang.data.clause.term.TeaCompoundTerm;
-import com.eduard0rocha.tealang.data.clause.term.TeaTerm;
-import com.eduard0rocha.tealang.data.clause.term.TeaVariable;
+import com.eduard0rocha.tealang.data.language.clause.TeaClause;
+import com.eduard0rocha.tealang.data.language.clause.TeaFact;
+import com.eduard0rocha.tealang.data.language.term.TeaAtom;
+import com.eduard0rocha.tealang.data.language.term.TeaCompoundTerm;
+import com.eduard0rocha.tealang.data.language.term.TeaTerm;
+import com.eduard0rocha.tealang.data.language.term.TeaVariable;
 
 /**
  * Knowledge base.
@@ -33,6 +33,7 @@ public class KnowledgeBase {
 		clausesByPredicate.computeIfAbsent(key, _ -> new ArrayList<>()).add(clause);
 	}
 	
+	// TODO: adapt this in the frame of unification feature
 	/**
 	 * Checks whether the knowledge base contains a clause matching the given term.
 	 *

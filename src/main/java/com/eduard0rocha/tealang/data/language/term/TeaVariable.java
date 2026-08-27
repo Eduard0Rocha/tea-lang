@@ -1,4 +1,4 @@
-package com.eduard0rocha.tealang.data.clause.term;
+package com.eduard0rocha.tealang.data.language.term;
 
 /**
  * Tea variable term DTO.

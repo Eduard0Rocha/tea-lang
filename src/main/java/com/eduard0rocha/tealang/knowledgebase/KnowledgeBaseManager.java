@@ -7,7 +7,7 @@ import java.nio.file.Path;
 
 import com.eduard0rocha.tealang.data.FileLoadResult;
 import com.eduard0rocha.tealang.data.TeaProgram;
-import com.eduard0rocha.tealang.data.clause.term.TeaTerm;
+import com.eduard0rocha.tealang.data.language.term.TeaTerm;
 import com.eduard0rocha.tealang.exception.InvalidClauseException;
 import com.eduard0rocha.tealang.parser.TeaParserFacade;
 

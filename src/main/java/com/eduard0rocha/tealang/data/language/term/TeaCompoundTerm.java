@@ -1,4 +1,4 @@
-package com.eduard0rocha.tealang.data.clause.term;
+package com.eduard0rocha.tealang.data.language.term;
 
 import java.util.List;
 import java.util.stream.Collectors;

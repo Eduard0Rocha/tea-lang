@@ -4,7 +4,7 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
 import com.eduard0rocha.tealang.data.TeaProgram;
-import com.eduard0rocha.tealang.data.clause.TeaClause;
+import com.eduard0rocha.tealang.data.language.clause.TeaClause;
 
 /**
  * Tea parser facade.

@@ -8,8 +8,8 @@ import java.util.List;
 import org.antlr.v4.runtime.misc.ParseCancellationException;
 
 import com.eduard0rocha.tealang.data.FileLoadResult;
-import com.eduard0rocha.tealang.data.clause.TeaClause;
-import com.eduard0rocha.tealang.data.clause.TeaFact;
+import com.eduard0rocha.tealang.data.language.clause.TeaClause;
+import com.eduard0rocha.tealang.data.language.clause.TeaFact;
 import com.eduard0rocha.tealang.knowledgebase.KnowledgeBaseManager;
 import com.eduard0rocha.tealang.parser.TeaParserFacade;
 
