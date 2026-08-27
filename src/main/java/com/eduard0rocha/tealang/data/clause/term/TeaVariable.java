@@ -1,15 +1,15 @@
 package com.eduard0rocha.tealang.data.clause.term;
 
 /**
- * Tea atom term DTO.
+ * Tea variable term DTO.
  * 
- * @param name the atom's name
+ * @param name the variable's name
  */
-public record TeaAtom(String name) implements TeaTerm {
+public record TeaVariable(String name) implements TeaTerm {
 
 	@Override
 	public boolean containsVariable() {
-		return false;
+		return true;
 	}
 
 	@Override

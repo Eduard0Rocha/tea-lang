@@ -8,6 +8,7 @@ import com.eduard0rocha.tealang.data.clause.TeaFact;
 import com.eduard0rocha.tealang.data.clause.term.TeaAtom;
 import com.eduard0rocha.tealang.data.clause.term.TeaCompoundTerm;
 import com.eduard0rocha.tealang.data.clause.term.TeaTerm;
+import com.eduard0rocha.tealang.data.clause.term.TeaVariable;
 
 /**
  * Converts ANTLR parse trees into TeaProgram DTOs.
@@ -33,14 +34,17 @@ public class TeaProgramBuilder extends TeaBaseVisitor<TeaProgram> {
 	}
 	
 	private TeaTerm toTeaTerm(final TeaParser.TermContext ctx) {
-		if (ctx.termArgs() == null) {
-			return new TeaAtom(ctx.ATOM().getText());
+		if (ctx.VARIABLE() != null) { // VARIABLE
+			return new TeaVariable(ctx.VARIABLE().getText());
 		}
-		final TeaParser.TermArgsContext termArgsCtx = ctx.termArgs();
-		final List<TeaTerm> arguments = termArgsCtx.term()
-				.stream()
-				.map(this::toTeaTerm)
-				.toList();
-		return new TeaCompoundTerm(ctx.ATOM().getText(), arguments);
+		if (ctx.termArgs() != null) { // ATOM LPAREN termArgs RPAREN
+			final TeaParser.TermArgsContext termArgsCtx = ctx.termArgs();
+			final List<TeaTerm> arguments = termArgsCtx.term()
+					.stream()
+					.map(this::toTeaTerm)
+					.toList();
+			return new TeaCompoundTerm(ctx.ATOM().getText(), arguments);
+		}
+		return new TeaAtom(ctx.ATOM().getText()); // ATOM
 	}
 }
