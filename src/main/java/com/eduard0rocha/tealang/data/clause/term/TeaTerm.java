@@ -13,9 +13,9 @@ public sealed interface TeaTerm permits TeaAtom, TeaCompoundTerm, TeaVariable {
 	boolean containsVariable();
 	
 	/**
-	 * Returns this term formatted as valid Tea/Prolog syntax.
+	 * Returns this term formatted as valid Tea syntax.
 	 *
-	 * @return the term formatted as Tea/Prolog syntax
+	 * @return the term formatted as Tea syntax
 	 */
 	String toPrologString();
 }
