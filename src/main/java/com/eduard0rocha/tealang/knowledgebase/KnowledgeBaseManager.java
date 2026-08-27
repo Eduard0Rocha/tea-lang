@@ -7,7 +7,6 @@ import java.nio.file.Path;
 
 import com.eduard0rocha.tealang.data.FileLoadResult;
 import com.eduard0rocha.tealang.data.TeaProgram;
-import com.eduard0rocha.tealang.data.clause.TeaClause;
 import com.eduard0rocha.tealang.data.clause.term.TeaTerm;
 import com.eduard0rocha.tealang.exception.InvalidClauseException;
 import com.eduard0rocha.tealang.parser.TeaParserFacade;
@@ -42,16 +41,7 @@ public class KnowledgeBaseManager {
 	
 	private void handleFileProgram(final String program) {
 	    final TeaProgram parsedProgram = TeaParserFacade.parseProgram(program);
-	    parsedProgram.clauses().forEach(this::validateAndAddClause);
-	}
-	
-	private void validateAndAddClause(final TeaClause clause) {
-		final TeaTerm clauseHead = clause.head();
-		// TODO: adapt this when implementing Tea rules (a(X,Y) -> b(Y,X)): condition and error message(s) thrown
-	    if (clauseHead.containsVariable()) {
-	    	throw new InvalidClauseException("Facts cannot contain variables: " + clauseHead.toPrologString());
-	    }
-	    knowledgeBase.addClause(clause);
+	    parsedProgram.clauses().forEach(knowledgeBase::addClause);
 	}
 	
 	/**
