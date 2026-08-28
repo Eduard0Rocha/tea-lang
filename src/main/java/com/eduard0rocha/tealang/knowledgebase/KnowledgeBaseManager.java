@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import com.eduard0rocha.tealang.data.FileLoadResult;
 import com.eduard0rocha.tealang.data.language.TeaProgram;
 import com.eduard0rocha.tealang.data.language.term.TeaTerm;
+import com.eduard0rocha.tealang.data.resolution.QueryResult;
 import com.eduard0rocha.tealang.exception.InvalidClauseException;
 import com.eduard0rocha.tealang.parser.TeaParserFacade;
 
@@ -44,13 +45,14 @@ public class KnowledgeBaseManager {
 	    parsedProgram.clauses().forEach(knowledgeBase::addClause);
 	}
 	
+	// FIXME: adapt java doc in the frame of unification feature
 	/**
 	 * Checks whether the knowledge base contains a clause matching the given term.
 	 *
 	 * @param term the term to query
 	 * @return {@code true} if a matching clause exists, {@code false} otherwise
 	 */
-	public boolean query(final TeaTerm term) {
+	public QueryResult query(final TeaTerm term) {
 	    return knowledgeBase.query(term);
 	}
 }

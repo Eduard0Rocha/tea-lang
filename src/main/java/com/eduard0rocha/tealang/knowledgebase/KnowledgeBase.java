@@ -12,6 +12,7 @@ import com.eduard0rocha.tealang.data.language.term.TeaAtom;
 import com.eduard0rocha.tealang.data.language.term.TeaCompoundTerm;
 import com.eduard0rocha.tealang.data.language.term.TeaTerm;
 import com.eduard0rocha.tealang.data.language.term.TeaVariable;
+import com.eduard0rocha.tealang.data.resolution.QueryResult;
 
 /**
  * Knowledge base.
@@ -33,17 +34,18 @@ public class KnowledgeBase {
 		clausesByPredicate.computeIfAbsent(key, _ -> new ArrayList<>()).add(clause);
 	}
 	
-	// TODO: adapt this in the frame of unification feature
+	// FIXME: adapt implementation in the frame of unification feature
+	// FIXME: adapt java doc in the frame of unification feature
 	/**
 	 * Checks whether the knowledge base contains a clause matching the given term.
 	 *
 	 * @param term the term to query
 	 * @return {@code true} if a matching clause exists, {@code false} otherwise
 	 */
-	public boolean query(final TeaTerm term) {
+	public QueryResult query(final TeaTerm term) {
 		final PredicateIndicator key = keyFor(term);
 		final List<TeaClause> predicateClauses = clausesByPredicate.getOrDefault(key, List.of());
-		return predicateClauses.stream().anyMatch(clause -> clause.head().equals(term));
+		return new QueryResult(predicateClauses.stream().anyMatch(clause -> clause.head().equals(term)));
 		// TODO: error checking (Unknown procedure: c/1 (... could not correct gols) ; Unknown procedure a/0\n\tHowever, there are definitions for:\n\t\ta/2\n false.)
 	}
 	
