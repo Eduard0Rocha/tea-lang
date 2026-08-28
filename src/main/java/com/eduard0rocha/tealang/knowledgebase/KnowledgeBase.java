@@ -61,7 +61,6 @@ public class KnowledgeBase {
 		return switch (term) {
 			case TeaAtom atom -> new PredicateIndicator(atom.name(), 0);
 			case TeaCompoundTerm compoundTerm -> new PredicateIndicator(compoundTerm.functor(), compoundTerm.arguments().size());
-			// TODO: revisit this when implementing unification
 			case TeaVariable variable -> throw new IllegalArgumentException("Cannot compute predicate indicator for a variable: " + variable.toPrologString());
 		};
 	}
