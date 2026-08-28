@@ -74,7 +74,7 @@ public class CommandLineInterface {
 		try {
 			final TeaQuery queryParsed = TeaParserFacade.parseQuery(query);
 			final QueryResult result = knowledgeBaseManager.query(queryParsed.term());
-			System.out.println(result.success() + ".");
+			System.out.println(result.toPrologString());
 		} catch (final ParseCancellationException e) {
 			System.out.println("Invalid query: " + e.getMessage());
 		}

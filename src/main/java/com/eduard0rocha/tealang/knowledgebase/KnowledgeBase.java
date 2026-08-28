@@ -13,6 +13,8 @@ import com.eduard0rocha.tealang.data.language.term.TeaCompoundTerm;
 import com.eduard0rocha.tealang.data.language.term.TeaTerm;
 import com.eduard0rocha.tealang.data.language.term.TeaVariable;
 import com.eduard0rocha.tealang.data.resolution.QueryResult;
+import com.eduard0rocha.tealang.data.resolution.Substitution;
+import com.eduard0rocha.tealang.data.resolution.Unifier;
 
 /**
  * Knowledge base.
@@ -33,20 +35,26 @@ public class KnowledgeBase {
 		};
 		clausesByPredicate.computeIfAbsent(key, _ -> new ArrayList<>()).add(clause);
 	}
-	
-	// FIXME: adapt implementation in the frame of unification feature
-	// FIXME: adapt java doc in the frame of unification feature
+
+	// TODO: error checking (Unknown procedure: c/1 (... could not correct gols) ; Unknown procedure a/0\n\tHowever, there are definitions for:\n\t\ta/2\n false.)
 	/**
-	 * Checks whether the knowledge base contains a clause matching the given term.
+	 * Attempts to unify the given term with a clause in the knowledge base.
 	 *
 	 * @param term the term to query
-	 * @return {@code true} if a matching clause exists, {@code false} otherwise
+	 * @return the result of the query, including any variable bindings discovered
 	 */
 	public QueryResult query(final TeaTerm term) {
 		final PredicateIndicator key = keyFor(term);
 		final List<TeaClause> predicateClauses = clausesByPredicate.getOrDefault(key, List.of());
-		return new QueryResult(predicateClauses.stream().anyMatch(clause -> clause.head().equals(term)), null);
-		// TODO: error checking (Unknown procedure: c/1 (... could not correct gols) ; Unknown procedure a/0\n\tHowever, there are definitions for:\n\t\ta/2\n false.)
+		
+		for (final TeaClause clause : predicateClauses) {
+	        final Substitution substitution = new Substitution();
+	        if (Unifier.unify(term, clause.head(), substitution)) {
+	            return new QueryResult(true, substitution);
+	        }
+	    }
+
+	    return new QueryResult(false, new Substitution());
 	}
 	
 	private PredicateIndicator keyFor(final TeaTerm term) {

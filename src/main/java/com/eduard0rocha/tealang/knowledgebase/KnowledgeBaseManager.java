@@ -45,12 +45,11 @@ public class KnowledgeBaseManager {
 	    parsedProgram.clauses().forEach(knowledgeBase::addClause);
 	}
 	
-	// FIXME: adapt java doc in the frame of unification feature
 	/**
-	 * Checks whether the knowledge base contains a clause matching the given term.
+	 * Attempts to unify the given term with a clause in the knowledge base.
 	 *
 	 * @param term the term to query
-	 * @return {@code true} if a matching clause exists, {@code false} otherwise
+	 * @return the result of the query, including any variable bindings discovered
 	 */
 	public QueryResult query(final TeaTerm term) {
 	    return knowledgeBase.query(term);
