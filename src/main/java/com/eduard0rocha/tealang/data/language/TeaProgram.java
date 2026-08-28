@@ -1,4 +1,4 @@
-package com.eduard0rocha.tealang.data;
+package com.eduard0rocha.tealang.data.language;
 
 import java.util.List;
 

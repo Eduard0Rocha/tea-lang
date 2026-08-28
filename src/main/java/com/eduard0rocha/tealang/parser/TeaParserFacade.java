@@ -3,7 +3,7 @@ package com.eduard0rocha.tealang.parser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
-import com.eduard0rocha.tealang.data.TeaProgram;
+import com.eduard0rocha.tealang.data.language.TeaProgram;
 import com.eduard0rocha.tealang.data.language.query.TeaQuery;
 
 /**

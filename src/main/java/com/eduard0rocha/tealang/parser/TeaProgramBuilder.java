@@ -2,7 +2,7 @@ package com.eduard0rocha.tealang.parser;
 
 import java.util.List;
 
-import com.eduard0rocha.tealang.data.TeaProgram;
+import com.eduard0rocha.tealang.data.language.TeaProgram;
 import com.eduard0rocha.tealang.data.language.clause.TeaClause;
 import com.eduard0rocha.tealang.data.language.clause.TeaFact;
 import com.eduard0rocha.tealang.data.language.query.TeaQuery;
