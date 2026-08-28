@@ -45,7 +45,7 @@ public class KnowledgeBase {
 	public QueryResult query(final TeaTerm term) {
 		final PredicateIndicator key = keyFor(term);
 		final List<TeaClause> predicateClauses = clausesByPredicate.getOrDefault(key, List.of());
-		return new QueryResult(predicateClauses.stream().anyMatch(clause -> clause.head().equals(term)));
+		return new QueryResult(predicateClauses.stream().anyMatch(clause -> clause.head().equals(term)), null);
 		// TODO: error checking (Unknown procedure: c/1 (... could not correct gols) ; Unknown procedure a/0\n\tHowever, there are definitions for:\n\t\ta/2\n false.)
 	}
 	
