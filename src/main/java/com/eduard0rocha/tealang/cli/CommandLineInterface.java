@@ -10,6 +10,7 @@ import org.antlr.v4.runtime.misc.ParseCancellationException;
 import com.eduard0rocha.tealang.data.FileLoadResult;
 import com.eduard0rocha.tealang.data.language.query.TeaQuery;
 import com.eduard0rocha.tealang.data.resolution.QueryResult;
+import com.eduard0rocha.tealang.exception.InvalidQueryException;
 import com.eduard0rocha.tealang.knowledgebase.KnowledgeBaseManager;
 import com.eduard0rocha.tealang.parser.TeaParserFacade;
 
@@ -75,7 +76,7 @@ public class CommandLineInterface {
 			final TeaQuery queryParsed = TeaParserFacade.parseQuery(query);
 			final QueryResult result = knowledgeBaseManager.query(queryParsed.term());
 			System.out.println(result.toPrologString());
-		} catch (final ParseCancellationException e) {
+		} catch (final ParseCancellationException|InvalidQueryException e) {
 			System.out.println("Invalid query: " + e.getMessage());
 		}
 	}

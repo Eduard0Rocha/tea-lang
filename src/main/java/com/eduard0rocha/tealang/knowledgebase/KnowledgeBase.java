@@ -15,6 +15,7 @@ import com.eduard0rocha.tealang.data.language.term.TeaVariable;
 import com.eduard0rocha.tealang.data.resolution.QueryResult;
 import com.eduard0rocha.tealang.data.resolution.Substitution;
 import com.eduard0rocha.tealang.data.resolution.Unifier;
+import com.eduard0rocha.tealang.exception.InvalidQueryException;
 
 /**
  * Knowledge base.
@@ -61,7 +62,7 @@ public class KnowledgeBase {
 		return switch (term) {
 			case TeaAtom atom -> new PredicateIndicator(atom.name(), 0);
 			case TeaCompoundTerm compoundTerm -> new PredicateIndicator(compoundTerm.functor(), compoundTerm.arguments().size());
-			case TeaVariable variable -> throw new IllegalArgumentException("Cannot compute predicate indicator for a variable: " + variable.toPrologString());
+			case TeaVariable variable -> throw new InvalidQueryException("Cannot compute predicate indicator for a variable: " + variable.toPrologString());
 		};
 	}
 }
