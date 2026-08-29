@@ -19,6 +19,6 @@ public record TeaFact(TeaTerm term) implements TeaClause {
 
 	@Override
 	public TeaTerm head() {
-		return term;
+		return term();
 	}
 }

@@ -5,7 +5,7 @@ import com.eduard0rocha.tealang.data.language.term.TeaTerm;
 /**
  * Tea clause DTO interface.
  */
-public sealed interface TeaClause permits TeaFact, TeaRule {
+public sealed interface TeaClause permits TeaFact {
 	
 	/**
 	 * Returns this clause's head term.

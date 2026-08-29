@@ -5,7 +5,6 @@ import java.util.List;
 import com.eduard0rocha.tealang.data.language.TeaProgram;
 import com.eduard0rocha.tealang.data.language.clause.TeaClause;
 import com.eduard0rocha.tealang.data.language.clause.TeaFact;
-import com.eduard0rocha.tealang.data.language.clause.TeaRule;
 import com.eduard0rocha.tealang.data.language.query.TeaQuery;
 import com.eduard0rocha.tealang.data.language.term.TeaAtom;
 import com.eduard0rocha.tealang.data.language.term.TeaCompoundTerm;
@@ -38,21 +37,12 @@ public class TeaProgramBuilder extends TeaBaseVisitor<TeaProgram> {
 	}
 	
 	private TeaClause toTeaClause(final TeaParser.ClauseContext ctx) {
-		if (ctx.fact() != null) {
-			return toTeaFact(ctx.fact());
-		}
-		return toTeaRule(ctx.rule_());
+		return toTeaFact(ctx.fact());
 	}
 	
 	private TeaFact toTeaFact(final TeaParser.FactContext ctx) {
 		final TeaTerm term = toTeaTerm(ctx.term());
 		return new TeaFact(term);
-	}
-	
-	private TeaRule toTeaRule(final TeaParser.RuleContext ctx) {
-		final TeaTerm head = toTeaTerm(ctx.term(0));
-		final TeaTerm body = toTeaTerm(ctx.term(1));
-		return new TeaRule(head, body);
 	}
 	
 	private TeaTerm toTeaTerm(final TeaParser.TermContext ctx) {
