@@ -31,9 +31,7 @@ public class KnowledgeBase {
 	 * @param clause the tea clause to add
 	 */
 	public void addClause(final TeaClause clause) {
-		final PredicateIndicator key = switch (clause) {
-			case TeaFact fact -> keyFor(fact.term());
-		};
+		final PredicateIndicator key = keyFor(clause.head());
 		clausesByPredicate.computeIfAbsent(key, _ -> new ArrayList<>()).add(clause);
 	}
 
