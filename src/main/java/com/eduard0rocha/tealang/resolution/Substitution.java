@@ -67,6 +67,7 @@ public class Substitution {
      * @return the formatted substitution
      */
     public String toPrologString() {
+    	// Bindings the user should see (excludes the anonymous variable "_")
     	final List<String> visibleBindings = bindings.entrySet().stream()
                 .filter(entry -> !entry.getKey().equals("_"))
                 .map(entry -> entry.getKey() + " = " + entry.getValue().toPrologString())
