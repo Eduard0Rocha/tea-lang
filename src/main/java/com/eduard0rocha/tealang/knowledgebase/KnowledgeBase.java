@@ -8,7 +8,6 @@ import java.util.Map;
 
 import com.eduard0rocha.tealang.data.PredicateIndicator;
 import com.eduard0rocha.tealang.data.language.clause.TeaClause;
-import com.eduard0rocha.tealang.data.language.clause.TeaFact;
 import com.eduard0rocha.tealang.data.language.term.TeaAtom;
 import com.eduard0rocha.tealang.data.language.term.TeaCompoundTerm;
 import com.eduard0rocha.tealang.data.language.term.TeaTerm;
