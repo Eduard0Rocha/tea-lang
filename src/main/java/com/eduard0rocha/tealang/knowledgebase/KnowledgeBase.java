@@ -31,7 +31,10 @@ public class KnowledgeBase {
 	 */
 	public void addClause(final TeaClause clause) {
 		final PredicateIndicator key = keyFor(clause.head());
-		clausesByPredicate.computeIfAbsent(key, _ -> new ArrayList<>()).add(clause);
+		final List<TeaClause> predicateClauses = clausesByPredicate.computeIfAbsent(key, _ -> new ArrayList<>());
+		if (!predicateClauses.contains(clause)) {
+			predicateClauses.add(clause);
+		}
 	}
 
 	// TODO: error checking (Unknown procedure: c/1 (... could not correct gols) ; Unknown procedure a/0\n\tHowever, there are definitions for:\n\t\ta/2\n false.)
