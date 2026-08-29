@@ -13,6 +13,7 @@ import com.eduard0rocha.tealang.data.language.term.TeaCompoundTerm;
 import com.eduard0rocha.tealang.data.language.term.TeaTerm;
 import com.eduard0rocha.tealang.data.language.term.TeaVariable;
 import com.eduard0rocha.tealang.exception.InvalidQueryException;
+import com.eduard0rocha.tealang.exception.UnknownProcedureException;
 import com.eduard0rocha.tealang.resolution.SolutionIterator;
 import com.eduard0rocha.tealang.resolution.Substitution;
 
@@ -37,7 +38,6 @@ public class KnowledgeBase {
 		}
 	}
 
-	// TODO: error checking (Unknown procedure: c/1 (... could not correct gols) ; Unknown procedure a/0\n\tHowever, there are definitions for:\n\t\ta/2\n false.)
 	/**
 	 * Returns an iterator over the substitutions produced by unifying the given term against the knowledge base.
 	 *
@@ -46,7 +46,10 @@ public class KnowledgeBase {
 	 */
 	public Iterator<Substitution> query(final TeaTerm term) {
 	    final PredicateIndicator key = keyFor(term);
-	    final List<TeaClause> predicateClauses = clausesByPredicate.getOrDefault(key, List.of());
+	    if (!clausesByPredicate.containsKey(key)) {
+	        throw new UnknownProcedureException("Unknown procedure: " + key.functor() + "/" + key.arity());
+	    }
+	    final List<TeaClause> predicateClauses = clausesByPredicate.get(key);
 	    return new SolutionIterator(term, predicateClauses);
 	}
 	

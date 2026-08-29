@@ -11,6 +11,7 @@ import org.antlr.v4.runtime.misc.ParseCancellationException;
 import com.eduard0rocha.tealang.data.FileLoadResult;
 import com.eduard0rocha.tealang.data.language.query.TeaQuery;
 import com.eduard0rocha.tealang.exception.InvalidQueryException;
+import com.eduard0rocha.tealang.exception.UnknownProcedureException;
 import com.eduard0rocha.tealang.knowledgebase.KnowledgeBaseManager;
 import com.eduard0rocha.tealang.parser.TeaParserFacade;
 import com.eduard0rocha.tealang.resolution.Substitution;
@@ -69,6 +70,8 @@ public class CommandLineInterface {
 	            handleQuery(query);
 	        } catch (final ParseCancellationException | InvalidQueryException e) {
 	            System.out.println("Invalid query: " + e.getMessage());
+	        } catch (final UnknownProcedureException e) {
+            	System.out.println(e.getMessage());
 	        } catch (final IOException e) {
 	            System.err.println("Failed to read query: " + e.getMessage());
 	            break;
