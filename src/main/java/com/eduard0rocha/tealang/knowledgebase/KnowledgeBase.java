@@ -12,10 +12,10 @@ import com.eduard0rocha.tealang.data.language.term.TeaAtom;
 import com.eduard0rocha.tealang.data.language.term.TeaCompoundTerm;
 import com.eduard0rocha.tealang.data.language.term.TeaTerm;
 import com.eduard0rocha.tealang.data.language.term.TeaVariable;
-import com.eduard0rocha.tealang.data.resolution.QueryResult;
-import com.eduard0rocha.tealang.data.resolution.Substitution;
-import com.eduard0rocha.tealang.data.resolution.Unifier;
 import com.eduard0rocha.tealang.exception.InvalidQueryException;
+import com.eduard0rocha.tealang.resolution.QueryResult;
+import com.eduard0rocha.tealang.resolution.Substitution;
+import com.eduard0rocha.tealang.resolution.Unifier;
 
 /**
  * Knowledge base.

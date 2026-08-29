@@ -1,4 +1,4 @@
-package com.eduard0rocha.tealang.data.resolution;
+package com.eduard0rocha.tealang.resolution;
 
 import java.util.HashMap;
 import java.util.Map;

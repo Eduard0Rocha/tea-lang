@@ -9,10 +9,10 @@ import org.antlr.v4.runtime.misc.ParseCancellationException;
 
 import com.eduard0rocha.tealang.data.FileLoadResult;
 import com.eduard0rocha.tealang.data.language.query.TeaQuery;
-import com.eduard0rocha.tealang.data.resolution.QueryResult;
 import com.eduard0rocha.tealang.exception.InvalidQueryException;
 import com.eduard0rocha.tealang.knowledgebase.KnowledgeBaseManager;
 import com.eduard0rocha.tealang.parser.TeaParserFacade;
+import com.eduard0rocha.tealang.resolution.QueryResult;
 
 /**
  * CLI interface.

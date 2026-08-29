@@ -1,4 +1,4 @@
-package com.eduard0rocha.tealang.data.resolution;
+package com.eduard0rocha.tealang.resolution;
 
 import com.eduard0rocha.tealang.data.language.term.TeaAtom;
 import com.eduard0rocha.tealang.data.language.term.TeaCompoundTerm;
