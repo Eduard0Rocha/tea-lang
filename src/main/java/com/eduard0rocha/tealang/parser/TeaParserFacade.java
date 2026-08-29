@@ -33,9 +33,9 @@ public class TeaParserFacade {
 	 * @throws org.antlr.v4.runtime.misc.ParseCancellationException if the query is invalid
 	 */
     public static TeaQuery parseQuery(final String query) {
-    	final TeaParser parser = createParser(query);
-    	final TeaParser.ClauseContext tree = parser.clause();
-    	return new TeaProgramBuilder().toTeaQuery(tree);
+        final TeaParser parser = createParser(query);
+        final TeaParser.QueryInputContext tree = parser.queryInput();
+        return new TeaProgramBuilder().toTeaQuery(tree);
     }
     
     private static TeaParser createParser(final String input) {

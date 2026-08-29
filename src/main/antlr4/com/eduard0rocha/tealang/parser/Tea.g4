@@ -2,6 +2,8 @@ grammar Tea;
 
 program : clause+ EOF;
 
+queryInput : clause EOF;
+
 clause : fact DOT;
 
 fact : term;

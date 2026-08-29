@@ -25,14 +25,14 @@ public class TeaProgramBuilder extends TeaBaseVisitor<TeaProgram> {
 	}
 	
 	/**
-	 * Converts a parsed clause into a TeaQuery DTO, without applying fact validation rules
+	 * Converts a parsed query into a TeaQuery DTO, without applying fact validation rules
 	 * (e.g. queries may contain variables).
 	 *
-	 * @param ctx the parsed clause context
+	 * @param ctx the parsed query input context
 	 * @return the resulting TeaQuery
 	 */
-	public TeaQuery toTeaQuery(final TeaParser.ClauseContext ctx) {
-		final TeaTerm term = toTeaTerm(ctx.fact().term());
+	public TeaQuery toTeaQuery(final TeaParser.QueryInputContext ctx) {
+	    final TeaTerm term = toTeaTerm(ctx.clause().fact().term());
 	    return new TeaQuery(term);
 	}
 	
