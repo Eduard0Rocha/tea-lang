@@ -18,7 +18,7 @@ import com.eduard0rocha.tealang.resolution.Substitution;
  */
 public class KnowledgeBaseManager {
 	
-	private KnowledgeBase knowledgeBase = new KnowledgeBase();
+	private final KnowledgeBase knowledgeBase = new KnowledgeBase();
 
 	/**
 	 * Reads, parses, and loads the Tea program from the given file into the knowledge base.

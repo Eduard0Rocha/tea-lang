@@ -20,7 +20,7 @@ import com.eduard0rocha.tealang.resolution.Substitution;
  */
 public class CommandLineInterface {
 	
-	private KnowledgeBaseManager knowledgeBaseManager = new KnowledgeBaseManager();
+	private final KnowledgeBaseManager knowledgeBaseManager = new KnowledgeBaseManager();
 	
 	private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	
