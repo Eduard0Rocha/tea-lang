@@ -1,8 +1,8 @@
 package com.eduard0rocha.tealang.resolution;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import com.eduard0rocha.tealang.data.language.term.TeaTerm;
 
@@ -67,11 +67,15 @@ public class Substitution {
      * @return the formatted substitution
      */
     public String toPrologString() {
-        if (isEmpty()) {
+    	final List<String> visibleBindings = bindings.entrySet().stream()
+                .filter(entry -> !entry.getKey().equals("_"))
+                .map(entry -> entry.getKey() + " = " + entry.getValue().toPrologString())
+                .toList();
+
+        if (visibleBindings.isEmpty()) {
             return "true";
         }
-        return bindings.entrySet().stream()
-                .map(entry -> entry.getKey() + " = " + entry.getValue().toPrologString())
-                .collect(Collectors.joining(",\n"));
+
+        return String.join(",\n", visibleBindings);
     }
 }
