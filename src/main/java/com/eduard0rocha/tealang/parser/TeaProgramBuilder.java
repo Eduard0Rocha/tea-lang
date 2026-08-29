@@ -25,8 +25,7 @@ public class TeaProgramBuilder extends TeaBaseVisitor<TeaProgram> {
 	}
 	
 	/**
-	 * Converts a parsed query into a TeaQuery DTO, without applying fact validation rules
-	 * (e.g. queries may contain variables).
+	 * Converts a parsed query into a TeaQuery DTO.
 	 *
 	 * @param ctx the parsed query input context
 	 * @return the resulting TeaQuery
