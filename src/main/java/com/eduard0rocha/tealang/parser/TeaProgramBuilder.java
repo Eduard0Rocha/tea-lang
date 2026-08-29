@@ -32,8 +32,8 @@ public class TeaProgramBuilder extends TeaBaseVisitor<TeaProgram> {
 	 * @return the resulting TeaQuery
 	 */
 	public TeaQuery toTeaQuery(final TeaParser.QueryInputContext ctx) {
-	    final TeaTerm term = toTeaTerm(ctx.clause().fact().term());
-	    return new TeaQuery(term);
+		final TeaTerm term = toTeaTerm(ctx.clause().fact().term());
+		return new TeaQuery(term);
 	}
 	
 	private TeaClause toTeaClause(final TeaParser.ClauseContext ctx) {
