@@ -2,9 +2,10 @@ grammar Tea;
 
 program : clause+ EOF;
 
-clause : fact DOT;
+clause : (fact | rule) DOT;
 
 fact : term;
+rule : term NECK term;
 
 term
 	: ATOM LPAREN termArgs RPAREN
@@ -20,6 +21,7 @@ VARIABLE : [A-Z_][a-zA-Z0-9_]*;
 LPAREN : '(';
 RPAREN : ')';
 COMMA  : ',';
+NECK   : ':-';
 DOT    : '.';
 
 WS : [ \t\r\n]+ -> skip;
