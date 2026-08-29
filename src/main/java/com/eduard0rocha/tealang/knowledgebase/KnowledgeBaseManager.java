@@ -4,13 +4,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
+import java.util.Iterator;
 
 import com.eduard0rocha.tealang.data.FileLoadResult;
 import com.eduard0rocha.tealang.data.language.TeaProgram;
 import com.eduard0rocha.tealang.data.language.term.TeaTerm;
 import com.eduard0rocha.tealang.exception.InvalidClauseException;
 import com.eduard0rocha.tealang.parser.TeaParserFacade;
-import com.eduard0rocha.tealang.resolution.QueryResult;
+import com.eduard0rocha.tealang.resolution.Substitution;
 
 /**
  * Knowledge base manager.
@@ -46,12 +47,12 @@ public class KnowledgeBaseManager {
 	}
 	
 	/**
-	 * Attempts to unify the given term with a clause in the knowledge base.
+	 * Returns an iterator over the substitutions produced by unifying the given term against the knowledge base.
 	 *
 	 * @param term the term to query
-	 * @return the result of the query, including any variable bindings discovered
+	 * @return an iterator over the successful unifications
 	 */
-	public QueryResult query(final TeaTerm term) {
+	public Iterator<Substitution> query(final TeaTerm term) {
 	    return knowledgeBase.query(term);
-	}
+	}	
 }

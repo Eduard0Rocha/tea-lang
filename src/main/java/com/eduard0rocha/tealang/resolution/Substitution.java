@@ -2,6 +2,7 @@ package com.eduard0rocha.tealang.resolution;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.eduard0rocha.tealang.data.language.term.TeaTerm;
 
@@ -58,5 +59,19 @@ public class Substitution {
      */
     public TeaTerm get(final String variableName) {
         return bindings.get(variableName);
+    }
+    
+    /**
+     * Formats this substitution as a Tea-style response (e.g. {@code X = alice.} or {@code true.}).
+     *
+     * @return the formatted substitution
+     */
+    public String toPrologString() {
+        if (isEmpty()) {
+            return "true";
+        }
+        return bindings.entrySet().stream()
+                .map(entry -> entry.getKey() + " = " + entry.getValue().toPrologString())
+                .collect(Collectors.joining(",\n"));
     }
 }

@@ -2,6 +2,7 @@ package com.eduard0rocha.tealang.knowledgebase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -13,9 +14,8 @@ import com.eduard0rocha.tealang.data.language.term.TeaCompoundTerm;
 import com.eduard0rocha.tealang.data.language.term.TeaTerm;
 import com.eduard0rocha.tealang.data.language.term.TeaVariable;
 import com.eduard0rocha.tealang.exception.InvalidQueryException;
-import com.eduard0rocha.tealang.resolution.QueryResult;
+import com.eduard0rocha.tealang.resolution.SolutionIterator;
 import com.eduard0rocha.tealang.resolution.Substitution;
-import com.eduard0rocha.tealang.resolution.Unifier;
 
 /**
  * Knowledge base.
@@ -39,23 +39,15 @@ public class KnowledgeBase {
 
 	// TODO: error checking (Unknown procedure: c/1 (... could not correct gols) ; Unknown procedure a/0\n\tHowever, there are definitions for:\n\t\ta/2\n false.)
 	/**
-	 * Attempts to unify the given term with a clause in the knowledge base.
+	 * Returns an iterator over the substitutions produced by unifying the given term against the knowledge base.
 	 *
 	 * @param term the term to query
-	 * @return the result of the query, including any variable bindings discovered
+	 * @return an iterator over the successful unifications
 	 */
-	public QueryResult query(final TeaTerm term) {
-		final PredicateIndicator key = keyFor(term);
-		final List<TeaClause> predicateClauses = clausesByPredicate.getOrDefault(key, List.of());
-		
-		for (final TeaClause clause : predicateClauses) {
-	        final Substitution substitution = new Substitution();
-	        if (Unifier.unify(term, clause.head(), substitution)) {
-	            return new QueryResult(true, substitution);
-	        }
-	    }
-
-	    return new QueryResult(false, new Substitution());
+	public Iterator<Substitution> query(final TeaTerm term) {
+	    final PredicateIndicator key = keyFor(term);
+	    final List<TeaClause> predicateClauses = clausesByPredicate.getOrDefault(key, List.of());
+	    return new SolutionIterator(term, predicateClauses);
 	}
 	
 	private PredicateIndicator keyFor(final TeaTerm term) {
