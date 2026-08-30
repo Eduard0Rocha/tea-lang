@@ -1,4 +1,4 @@
-	package com.eduard0rocha.tealang.parser;
+package com.eduard0rocha.tealang.parser;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
