@@ -22,7 +22,7 @@ A Prolog-inspired logic programming language interpreter built from scratch in J
 **CLI / Knowledge base**
 
 - Interactive REPL (`tea>` prompt)
-- Load multiple `.tea` files at startup, best-effort (reports per-file success/failure)
+- Load multiple `.tea` files at startup, best-effort (reports per-file failures, with an overall success summary)
 - Duplicate clause prevention
 
 ### Known limitations
